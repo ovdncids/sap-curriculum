@@ -1,7 +1,8 @@
 # SAP
 
-## Docker S/4HANA 설치
+## Docker S/4HANA Trial 설치
 * https://www.youtube.com/watch?v=j80h09W396M
+* https://www.youtube.com/watch?v=uwGnfSJxw0U
 
 ### S/4HANA 이미지 다운로드
 ```sh
@@ -96,4 +97,9 @@ docker cp /{다운 경로}/A4H_Multiple.txt a4h:/opt/sap/ASABAP_license
 docker exec -it a4h /usr/local/bin/asabap_license_update
 # 2 SAP license key(s) successfully installed.
 # 이렇게 뜨면 재시작 없이 DEVELOPER 로그인 가능
+```
+
+### 사용자 관리
+```sh
+SAP* 로그인 > 트랜젝션 Inputbox > SU01
 ```
