@@ -94,5 +94,6 @@ Logon Language: EN
 ```sh
 docker cp /{다운 경로}/A4H_Multiple.txt a4h:/opt/sap/ASABAP_license
 docker exec -it a4h /usr/local/bin/asabap_license_update
+# 2 SAP license key(s) successfully installed.
+# 이렇게 뜨면 재시작 없이 DEVELOPER 로그인 가능
 ```
-* DEVELOPER 로그인
