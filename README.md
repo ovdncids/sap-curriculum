@@ -8,26 +8,27 @@
 docker pull amitlaldocker/abaptrial:1909
 ```
 
-* 윈도우
+### 윈도우
 ```sh
 docker run --stop-timeout 3600 -it --name a4h -h vhcala4hci --sysctl kernel.shmmni=32768 --ulimit nofile=1048576:1048576 -p 3200:3200 -p 3300:3300 -p 8443:8443 -p 30213:30213 -p 50000:50000 -p 50001:50001 amitlaldocker/abaptrial:1909 -skip-limits-check -agree-to-sap-license
 ```
 
-* Mac Silicon은 `--platform linux/amd64` 넣어야 함
+### Mac Silicon
+* `--platform linux/amd64` 넣어야 함
 * Docker Desktop > Settings > Resources > 메모리 16G 이상, 나머지도 전부 Max
 ```sh
 docker run --platform linux/amd64 --stop-timeout 3600 -it --name a4h -h vhcala4hci --sysctl kernel.shmmni=32768 --ulimit nofile=1048576:1048576 -p 3200:3200 -p 3300:3300 -p 8443:8443 -p 30213:30213 -p 50000:50000 -p 50001:50001 amitlaldocker/abaptrial:1909 -skip-limits-check -agree-to-sap-license
 ```
 * `!!! HDB license has expired !!!` 나오면 하드웨어적 성공
 ```sh
+# Ctrl + C 2번 또는
 docker stop a4h --timeout 7200
 ```
 * 안되면 Docker Desktop에서 정지
 
 ### 라이센스
 * [라이센스 받기](https://go.support.sap.com/minisap/#/minisap)
-* `Hardware Key`는 `!!! HDB license has expired !!!` 2줄 위에 있음
-* A4H - SAP NetWeaver AS ABAP 7.4 and above (Linux / SAP HANA) > Generate 하면 `A4H_Multiple.txt` 파일 다운로드 됨
+* Hardware Key: B1002322283 (`!!! HDB license has expired !!!` 2줄 위에 있음)
 * HDB - SAP HANA Platform Edition (64GB) > Generate 하면 `HDB.txt` 파일 다운로드 됨
 ```sh
 docker cp /{다운 경로}/HDB.txt a4h:/opt/sap/HDB_license
@@ -82,3 +83,5 @@ User: DEVELOPER
 Password: Ldtf5432
 Logon Language: EN
 ```
+* A4H - SAP NetWeaver AS ABAP 7.4 and above (Linux / SAP HANA) > Generate 하면 `A4H_Multiple.txt` 파일 다운로드 됨
+
