@@ -10,14 +10,31 @@ docker pull amitlaldocker/abaptrial:1909
 ```
 
 ### 윈도우
+* `C:\Users\<UserName>\.wslconfig`
+```sh
+[wsl2]
+processors=0
+memory=16GB
+swap=16GB
+```
+
+* CMD에서 WSL2의 CPU와 Memory가 늘어났는지 확인
+```cmd
+wsl --shutdown
+wsl
+free -h
+nproc
+```
+
+* S/4HANA Trial Container 생성
 ```sh
 docker run --stop-timeout 3600 -it --name a4h -h vhcala4hci --sysctl kernel.shmmni=32768 --ulimit nofile=1048576:1048576 -p 3200:3200 -p 3300:3300 -p 8443:8443 -p 30213:30213 -p 50000:50000 -p 50001:50001 amitlaldocker/abaptrial:1909 -skip-limits-check -agree-to-sap-license
 # 5분에서 10분정도 기다림
 ```
 
-### Mac Silicon
-* `--platform linux/amd64` 넣어야 함
+### Mac
 * Docker Desktop > Settings > Resources > 메모리 16G 이상, 나머지도 전부 Max
+* `Mac Silicon`의 경우 `--platform linux/amd64` 넣어야 함
 ```sh
 docker run --platform linux/amd64 --stop-timeout 3600 -it --name a4h -h vhcala4hci --sysctl kernel.shmmni=32768 --ulimit nofile=1048576:1048576 -p 3200:3200 -p 3300:3300 -p 8443:8443 -p 30213:30213 -p 50000:50000 -p 50001:50001 amitlaldocker/abaptrial:1909 -skip-limits-check -agree-to-sap-license
 # 5분에서 10분정도 기다림
