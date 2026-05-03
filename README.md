@@ -1,6 +1,6 @@
 # SAP
 
-## Docker S/4HANA Trial 설치
+## Docker S/4HANA Trial@1909 설치
 * https://www.youtube.com/watch?v=j80h09W396M
 * https://www.youtube.com/watch?v=uwGnfSJxw0U
 
