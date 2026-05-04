@@ -10,7 +10,7 @@ docker pull amitlaldocker/abaptrial:1909
 ```
 
 ### 윈도우
-* `C:\Users\<UserName>\.wslconfig`
+* `C:\Users\{UserName}\.wslconfig`
 ```sh
 [wsl2]
 processors=0
@@ -18,12 +18,16 @@ memory=16GB
 swap=16GB
 ```
 
-* CMD에서 WSL2의 CPU와 Memory가 늘어났는지 확인
+* cmd
 ```cmd
 wsl --shutdown
 wsl
-free -h
+
+:: CPU 확인
 nproc
+
+:: Memory 확인
+free -h
 ```
 
 * S/4HANA Trial Container 생성
