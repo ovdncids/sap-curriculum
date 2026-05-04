@@ -1,6 +1,6 @@
 # SAP
 
-## Docker S/4HANA Trial@1909 설치
+## Docker SAP S/4HANA Trial@1909 설치
 * https://www.youtube.com/watch?v=j80h09W396M
 * https://www.youtube.com/watch?v=uwGnfSJxw0U
 
@@ -94,7 +94,7 @@ docker exec -it a4h bash
 ```sh
 sudo vi /etc/hosts
 
-# SAP S/4HANA
+# SAP S/4HANA Trial@1909
 127.0.0.1 vhcala4hci
 ```
 * https://vhcala4hci:50001/sap/bc/ui2/flp
