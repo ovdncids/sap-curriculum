@@ -69,31 +69,6 @@ docker logs -f a4h
 * `Have fun!` 나오면 HDB 라이센스 성공 `SAP*` 로그인 가능 (다시 시작 한다면 `Have fun!`까지 기다려야 정상 작동)
 * `Hint: Container must have at least 16GB RAM available` 나온다면 Container 다시 실행 또는 재부팅
 
-### A4H 라이센스 받기
-* https://go.support.sap.com/minisap/#/minisap
-
-```sh
-# `Have fun!` 위에 로그를 보면
-System ID. . . . : A4H
-Hardware Key . . : {그때 그때 바뀜}        (of this computer)
-```
-* A4H - SAP NetWeaver AS ABAP 7.4 and above (Linux / SAP HANA) > Generate 하면 `A4H_Multiple.txt` 파일 다운로드 됨
-
-```sh
-# Container가 돌고 있는 상태에서
-docker cp /{다운 경로}/A4H_Multiple.txt a4h:/opt/sap/ASABAP_license
-docker exec -it a4h /usr/local/bin/asabap_license_update
-```
-* `2 SAP license key(s) successfully installed.` 이렇게 뜨면 재시작 없이 `DEVELOPER` 로그인 가능
-
-### S/4HANA Trial 서버 bash 들어가기
-```sh
-docker exec -it a4h bash
-
-# 정상적으로 서버가 `GREEN, Running` 인지 확인
-/usr/sap/hostctrl/exe/sapcontrol -nr 00 -function GetProcessList
-```
-
 ### hosts 설정
 ```sh
 sudo vi /etc/hosts
@@ -110,11 +85,11 @@ sudo vi /etc/hosts
 * Windows, Mac, Linux 버전별이 압축되어 있음
 ```sh
 # 실행
-내역: 사용할 이름
+내역: {이름}
 고급 > 전문가 모드 > 저장 버튼 활성화 됨
 conn=/H/vhcala4hci/S/3200
 
-# 저장 후 더블 클릭
+# {이름} 더블 클릭
 Client: 001
 User: SAP*
 Password: Ldtf5432
@@ -127,16 +102,24 @@ Password: Ldtf5432
 Logon Language: EN
 ```
 
-### DEVELOPER 로그인 시 Logon not possible (error in license check) 뜰 때
-* SAP* 로그인 > 트랜젝션 Inputbox > SLICENSE > Active Hardware Key 복사 (B1002322283와 다른지 확인)
-* 새로운 `Active Hardware Key`로 `A4H_Multiple.txt` 다시 다운로드
-
+### A4H 라이센스 받기 (DEVELOPER 로그인 시 Logon not possible (error in license check))
+* SAP* 로그인 > 트랜젝션 Inputbox > SLICENSE > Active Hardware Key 복사 (B1002322283 아님. Container 마다 새로 생성)
+* https://go.support.sap.com/minisap/#/minisap
+* A4H - SAP NetWeaver AS ABAP 7.4 and above (Linux / SAP HANA) > Generate 하면 `A4H_Multiple.txt` 파일 다운로드 됨
 ```sh
 # Container가 돌고 있는 상태에서
 docker cp /{다운 경로}/A4H_Multiple.txt a4h:/opt/sap/ASABAP_license
 docker exec -it a4h /usr/local/bin/asabap_license_update
 ```
 * `2 SAP license key(s) successfully installed.` 이렇게 뜨면 재시작 없이 `DEVELOPER` 로그인 가능
+
+### S/4HANA Trial 서버 bash 들어가기
+```sh
+docker exec -it a4h bash
+
+# 정상적으로 서버가 `GREEN, Running` 인지 확인
+/usr/sap/hostctrl/exe/sapcontrol -nr 00 -function GetProcessList
+```
 
 ### 사용자 관리
 ```sh
