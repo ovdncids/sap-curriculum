@@ -3,9 +3,15 @@
 ## Docker SAP S/4HANA Trial@1909 설치
 * [Docker SAP S/4HANA Trial@1909 설치](https://github.com/ovdncids/sap-curriculum/blob/master/Install.md)
 
-## 사용자 관리 추가
+## 사용자 추가
 ```sh
-SAP* 로그인 > 트랜젝션 Inputbox > SU01
+DEVELOPER 로그인 > 트랜젝션 Inputbox > SU01
+User: 사용자명 입력 후 Create(F8) 아이콘
+Address > Title, Last name, First name 입력
+Logon Data > Alias, New Password, Repeat Password
+Defaults > Date Format > YYYY-MM-DD
+Profiles > Profile 입력창 > SAP_ALL > 엔터
+Exit > Save user
 ```
 
 ## 용어
