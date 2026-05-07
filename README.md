@@ -4,6 +4,7 @@
 * [Docker SAP S/4HANA Trial@1909 설치](https://github.com/ovdncids/sap-curriculum/blob/master/Install.md)
 
 ## 사용자 추가
+* https://www.youtube.com/watch?v=Otm8svqKfvk&t=453s
 ```sh
 DEVELOPER 로그인 > 트랜젝션 Inputbox > SU01
 User: 사용자명 입력 후 Create(F8) 아이콘
@@ -12,6 +13,22 @@ Logon Data > Alias, New Password, Repeat Password
 Defaults > Date Format > YYYY-MM-DD
 Profiles > Profile 입력창 > SAP_ALL > 엔터
 Exit > Save user
+```
+
+## 더미 데이터 생성
+* https://www.youtube.com/watch?v=Otm8svqKfvk&t=453s
+```sh
+# 생성
+새로운 사용자 로그인 > 트랜젝션 Inputbox > SE38
+Program: SAPBC_DATA_GENERATOR > 실행(F8)
+Standard Data Record 선택 > 실행(F8) > Yes
+
+# 조회
+트랜젝션 Inputbox > SE11
+Database table: SFLIGHT > 조회(Display: F7)
+Contents (Data Browser: Ctrl + Shift + F10) 누르기
+Data Browser > 실행(F8)
+상단 메뉴 Settings > User Parameters...(F8) > ALV Grid Display 선택
 ```
 
 ## 용어
