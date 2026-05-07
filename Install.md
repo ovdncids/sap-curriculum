@@ -78,9 +78,8 @@ sudo vi /etc/hosts
 * SAP* / Ldtf5432
 * 간단한 로그인 확인 가능
 
-## SAP GUI for Java@8.10 설치
-* [SAP_GUI_for_Java.rar 다운로드](https://www.sap.com/products/try-sap/trials-downloads.html)
-* Windows, Mac, Linux 버전별이 압축되어 있음
+## SAP GUI for Windows, Java@8.10 설치
+* [다운로드](https://www.sap.com/products/try-sap/trials-downloads.html)
 ```sh
 # 실행
 내역: {이름}
