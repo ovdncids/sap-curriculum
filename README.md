@@ -54,7 +54,7 @@ MDG: 데이터관리
 
 ## ABAP
 ```sh
-사용자 로그인 > 트랜젝션 Inputbox > SE80 (ABAP Workbench) (/OSE80: 현재창 말고 새로운 창에서 SE80 열기)
+사용자 로그인 > 트랜젝션 Inputbox > SE80 (ABAP Workbench)
 Local Objects (자신의 계정에서만 사용 가능) > 사용자
 $TMP_{사용자} > Create > Program > ZTEST001 (커스텀 프로그램은 Z나 Y로 시작)
 Title: 한글명 가능, Type: Executable program (실행가능 프로그램) > Save
@@ -78,5 +78,5 @@ CL_DEMO_OUTPUT=>DISPLAY('내용').
 
 ## ABAP Runtime Errors
 ```sh
-사용자 로그인 > 트랜젝션 Inputbox > ST22
+사용자 로그인 > 트랜젝션 Inputbox > ST22 (/OST22: 현재창 말고 새로운 창에서 ST22 열기)
 ```
