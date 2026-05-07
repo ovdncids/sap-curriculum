@@ -51,3 +51,27 @@ HR: 인사
 TR: 자금
 MDG: 데이터관리
 ```
+
+## ABAP
+```sh
+사용자 로그인 > 트랜젝션 Inputbox > SE80 (ABAP Workbench) (/OSE80: 현재창 말고 새로운 창에서 SE80 열기)
+Local Objects (자신의 계정에서만 사용 가능) > 사용자
+$TMP_{사용자} > Create > Program > ZTEST001 (커스텀 프로그램은 Z나 Y로 시작)
+Title: 한글명 가능, Type: Executable program (실행가능 프로그램) > Save
+Package: $TMP > Local Object
+$TMP_{사용자} > Program > ZTEST001 > Change (프로그램 수정)
+```
+
+* 프로그램 수정
+```abap
+REPORT ZTEST001.
+WRITE: 'Hello'.
+WRITE:/ 'World'.
+*/(줄바꿈)
+*활성화(Ctrl + F3), 실행(F8)
+
+CL_DEMO_OUTPUT=>BEGIN_SECTION('H1').
+CL_DEMO_OUTPUT=>BEGIN_SECTION('H2').
+CL_DEMO_OUTPUT=>BEGIN_SECTION('H3').
+CL_DEMO_OUTPUT=>DISPLAY('내용').
+```
