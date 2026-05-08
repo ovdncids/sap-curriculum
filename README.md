@@ -53,6 +53,7 @@ MDG: 데이터관리
 ```
 
 ## ABAP
+### 프로그램 생성
 ```sh
 사용자 로그인 > T-Code: SE80 (ABAP Workbench)
 Local Objects (자신의 계정에서만 사용 가능) > 사용자
@@ -62,24 +63,50 @@ Package: $TMP > Local Object
 $TMP_{사용자} > Program > ZTEST001 > Change (프로그램 수정)
 ```
 
-* 프로그램 수정
+### 프로그램 수정
 ```abap
 REPORT ZTEST001.
 
-*결과창
-WRITE: 'Hello'.
-WRITE:/ 'World'.
-*/(줄바꿈)
-*활성화(Ctrl + F3), 실행(F8)
+* 브레이크 포인트
+BREAK-POINT.
 
-*Alert창과 유사함 (Debug 모드에서 확인 가능)
+* 결과창 (Debug 모드 종료 후 확인 가능)
+SKIP to LINE 10. " Y축 Offset
+POSITION 40.     " X축 Offset
+WRITE: 'Hello'.
+WRITE:/ 'World'. " /(줄바꿈)
+
+* Alert창과 유사함 (Debug 모드 진행중 확인 가능)
 MESSAGE 'Debug 확인' TYPE 'I'.
 
-*OUTPUT창
+* OUTPUT창 (Debug 모드 종료 후 확인 가능)
 CL_DEMO_OUTPUT=>BEGIN_SECTION('H1').
 CL_DEMO_OUTPUT=>BEGIN_SECTION('H2').
 CL_DEMO_OUTPUT=>BEGIN_SECTION('H3').
 CL_DEMO_OUTPUT=>DISPLAY('내용').
+```
+* 활성화(Ctrl + F3), 실행(F8)
+
+### 팝업창
+```abap
+REPORT ZTEST001.
+
+* 팝업 스크린 정의 (1100 = 커스텀을 뜻함, 9999까지 사용 가능)
+SELECTION-SCREEN BEGIN OF SCREEN 1100.
+  PARAMETERS input1(12) TYPE c DEFAULT 'Hello'.
+  * PARAMETERS input1 TYPE char12 DEFAULT 'Hello'.
+  PARAMETERS input2 TYPE string DEFAULT 'World'.
+SELECTION-SCREEN END OF SCREEN 1100.
+* 팝업 스크린 부르기 (0 0 = X Y 팝업 좌표)
+CALL SELECTION-SCREEN 1100 STARTING AT 0 0.
+
+* 실행 후 팝업창의 Execute(F8) 버튼을 누르면 sy-subrc값은 0이 됨
+IF sy-subrc <> 0.
+  LEAVE PROGRAM.
+ENDIF.
+
+MESSAGE input1 TYPE 'I'.
+WRITE input2.
 ```
 
 ## ABAP Runtime Errors, Logs
