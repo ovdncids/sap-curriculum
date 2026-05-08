@@ -65,18 +65,27 @@ $TMP_{사용자} > Program > ZTEST001 > Change (프로그램 수정)
 * 프로그램 수정
 ```abap
 REPORT ZTEST001.
+
+*결과창
 WRITE: 'Hello'.
 WRITE:/ 'World'.
 */(줄바꿈)
 *활성화(Ctrl + F3), 실행(F8)
 
+*Alert창과 유사함 (Debug 모드에서 확인 가능)
+MESSAGE 'Debug 확인' TYPE 'I'.
+
+*OUTPUT창
 CL_DEMO_OUTPUT=>BEGIN_SECTION('H1').
 CL_DEMO_OUTPUT=>BEGIN_SECTION('H2').
 CL_DEMO_OUTPUT=>BEGIN_SECTION('H3').
 CL_DEMO_OUTPUT=>DISPLAY('내용').
 ```
 
-## ABAP Runtime Errors
+## ABAP Runtime Errors, Logs
 ```sh
 사용자 로그인 > 트랜젝션 Inputbox > ST22 (/OST22: 현재창 말고 새로운 창에서 ST22 열기)
+
+# 로그 분석
+SLG1 / ST05 / SAT
 ```
