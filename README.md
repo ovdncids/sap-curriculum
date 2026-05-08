@@ -6,7 +6,7 @@
 ## 사용자 추가
 * https://www.youtube.com/watch?v=Otm8svqKfvk&t=453s
 ```sh
-DEVELOPER 로그인 > 트랜젝션 Inputbox > SU01
+DEVELOPER 로그인 > T-Code: SU01
 User: 사용자명 입력 후 Create(F8) 아이콘
 Address > Title, Last name, First name 입력
 Logon Data > Alias, New Password, Repeat Password
@@ -19,12 +19,12 @@ Exit > Save user
 * https://www.youtube.com/watch?v=Otm8svqKfvk&t=453s
 ```sh
 # 생성
-새로운 사용자 로그인 > 트랜젝션 Inputbox > SE38
+새로운 사용자 로그인 > T-Code: SE38
 Program: SAPBC_DATA_GENERATOR > 실행(F8)
 Standard Data Record 선택 > 실행(F8) > Yes
 
 # 조회
-트랜젝션 Inputbox > SE11
+T-Code: SE11
 Database table: SFLIGHT > 조회(Display: F7)
 Contents (Data Browser: Ctrl + Shift + F10) 누르기
 Data Browser > 실행(F8)
@@ -54,7 +54,7 @@ MDG: 데이터관리
 
 ## ABAP
 ```sh
-사용자 로그인 > 트랜젝션 Inputbox > SE80 (ABAP Workbench)
+사용자 로그인 > T-Code: SE80 (ABAP Workbench)
 Local Objects (자신의 계정에서만 사용 가능) > 사용자
 $TMP_{사용자} > Create > Program > ZTEST001 (커스텀 프로그램은 Z나 Y로 시작)
 Title: 한글명 가능, Type: Executable program (실행가능 프로그램) > Save
@@ -84,8 +84,22 @@ CL_DEMO_OUTPUT=>DISPLAY('내용').
 
 ## ABAP Runtime Errors, Logs
 ```sh
-사용자 로그인 > 트랜젝션 Inputbox > ST22 (/OST22: 현재창 말고 새로운 창에서 ST22 열기)
+T-Code: ST22 (/OST22: 현재창 말고 새로운 창에서 ST22 열기, /NST22: 현재창 종료 후 ST22 이동)
 
 # 로그 분석
 SLG1 / ST05 / SAT
+```
+
+## Package 생성
+```sh
+# Transport Organizer: 변경사항 배포 관리 시스템
+T-Code: SE01 > Create(F6) > Workbench request
+Short Description: {리퀘스트 테스트 001} > Save
+Modifiable > {A4HK9000?1) 사용자 {리퀘스트 테스트 001}
+             {A4HK9000?2) 사용자 Uclassified > 클릭 > 상단 Request/Task > Change Type > Development/Correction
+
+# Package 생
+T-Code: SE80 > Package > {ZABAP_PACKAGE_TEST001} > 엔터 > Create
+Short Description: {아밥 패키지 테스트001}, Package Type: Main Package > Save
+Request 오른쪽 Browser 아이콘: {리퀘스트 테스트 001} 선택 > Save
 ```
