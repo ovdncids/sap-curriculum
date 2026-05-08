@@ -100,7 +100,7 @@ Logon Language: EN
 ```
 
 ## A4H 라이센스 받기 (DEVELOPER 로그인 시 Logon not possible (error in license check))
-* SAP* 로그인 > 트랜젝션 Inputbox > SLICENSE > Active Hardware Key 복사 (B1002322283 아님. Container 마다 새로 생성)
+* SAP* 로그인 > T-Code: SLICENSE > Active Hardware Key 복사 (B1002322283 아님. Container 마다 새로 생성)
 * https://go.support.sap.com/minisap/#/minisap
 * A4H - SAP NetWeaver AS ABAP 7.4 and above (Linux / SAP HANA) > Generate 하면 `A4H_Multiple.txt` 파일 다운로드 됨
 ```sh
