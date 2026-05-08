@@ -100,7 +100,7 @@ SELECTION-SCREEN END OF SCREEN 1100.
 * 팝업 스크린 부르기 (0 0 = X Y 팝업 좌표)
 CALL SELECTION-SCREEN 1100 STARTING AT 0 0.
 
-* 실행 후 팝업창의 Execute(F8) 버튼을 누르면 sy-subrc값은 0이 됨
+* 실행 후 팝업창의 Execute(F8) 버튼을 누르면 sy-subrc 값은 0이 됨
 IF sy-subrc <> 0.
   LEAVE PROGRAM.
 ENDIF.
