@@ -99,6 +99,15 @@ Password: Ldtf5432
 Logon Language: EN
 ```
 
+### SAP GUI for Java@8.10에서 Editor 열때 에러
+```sh
+T-Code: SE80 > DEMO_HELLO_WORLD > change
+* Exception condition "CNTL_ERROR" triggered 발생
+
+T-Code: SE80 > Utilities > Settings > ABAP Editor > Editor >
+Source Code-Based Editor에서 Text-Based Editor 변경 후 재시작
+```
+
 ## A4H 라이센스 받기 (DEVELOPER 로그인 시 Logon not possible (error in license check))
 * SAP* 로그인 > T-Code: SLICENSE > Active Hardware Key 복사 (B1002322283 아님. Container 마다 새로 생성)
 * https://go.support.sap.com/minisap/#/minisap
