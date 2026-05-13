@@ -34,22 +34,27 @@ Data Browser > 실행(F8)
 ## 용어
 ```sh
 # 메인 모듈
-CO: 원가관리
+CO (Controlling): 원가관리
 FI: 재무회계
 SD: 영업/물류
 PP: 생산 관리
 MM: 자재/구매
-BC: Basis (SAP 시스템의 설치, 운영, 관리, 기술 인프라를 담당하는 영역)
+BC (Basis): (SAP 시스템의 설치, 운영, 관리, 기술 인프라를 담당하는 영역)
 
 # 서브 모듈
 QM: 품질
 PM: 설비
 LE: 문류
 EWM: 창고관리
-PS: 프로젝트
+PS: 프로젝트 (집짓 프로젝트)
+WBS (Work Breakdown Structure): Breakdown: 잘게 나누다. 프로젝트 세부 작업 번호 (전기 공사, 배관 공사)
 HR: 인사
 TR: 자금
+MD (Master Data): 기준 데이터
 MDG: 데이터관리
+
+# 관련 용어
+PI (Process Integration): 회사 시스템들의 연결
 ```
 
 ## ABAP
