@@ -34,6 +34,23 @@ ENDFUNCTION.
 ```
 * 활성화(Ctrl + F3) 도중 Bypass 오류 나면 Active 버튼 누름, 실행(F8)
 
+## pom.xml
+```xml
+<dependency>
+    <groupId>me.saro</groupId>
+    <artifactId>sap-jco-manager</artifactId>
+    <version>3.0.14.7</version>
+</dependency>
+<dependency>
+    <groupId>com.sap.conn.jco</groupId>
+    <artifactId>sapjco3</artifactId>
+    <version>3.0.14</version>
+    <scope>system</scope>
+    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/sapjco3.jar</systemPath>
+    <!-- 현 github 하위 lib 폴더의 모든 파일을 ${basedir}/src/main/webapp/WEB-INF/lib에 복사  -->
+</dependency>
+```
+
 ## Java
 ```java
 public class SapConnection {
@@ -75,20 +92,3 @@ public class SapConnection {
 ```
 * 실행 할 수 있는 `main()` 메서드에서 `SapConnection.connect();`
 * 콘솔에 `Hello World!` 찍힘
-
-### pom.xml
-```xml
-<dependency>
-    <groupId>me.saro</groupId>
-    <artifactId>sap-jco-manager</artifactId>
-    <version>3.0.14.7</version>
-</dependency>
-<dependency>
-    <groupId>com.sap.conn.jco</groupId>
-    <artifactId>sapjco3</artifactId>
-    <version>3.0.14</version>
-    <scope>system</scope>
-    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/sapjco3.jar</systemPath>
-    <!-- 현 github의 lib 폴더의 모든 파일을 ${basedir}/src/main/webapp/WEB-INF/lib에 복사  -->
-</dependency>
-```
