@@ -46,7 +46,7 @@ QM: 품질
 PM: 설비
 LE: 문류
 EWM: 창고관리
-PS (Project System): 프로젝트 (집짓 프로젝트)
+PS (Project System): 프로젝트 (집짓는 프로젝트)
 WBS (Work Breakdown Structure): Breakdown: 잘게 나누다. 프로젝트 세부 작업 번호 (전기 공사, 배관 공사)
   # PS > WBS > Network > Activity
 HR: 인사
