@@ -118,6 +118,7 @@ docker cp /{다운 경로}/A4H_Multiple.txt a4h:/opt/sap/ASABAP_license
 docker exec -it a4h /usr/local/bin/asabap_license_update
 ```
 * `2 SAP license key(s) successfully installed.` 이렇게 뜨면 재시작 없이 `DEVELOPER` 로그인 가능
+* 30일 후에 `Logon not possible (error in license check)` 또 뜨면 라이센스 다시 받자
 
 ## S/4HANA Trial 서버 bash 들어가기
 ```sh
