@@ -130,4 +130,9 @@ docker exec -it a4h bash
 # disp+work 명령으로 버전 보기
 export LD_LIBRARY_PATH=/usr/sap/A4H/D00/exe:/usr/sap/A4H/SYS/exe/run:$LD_LIBRARY_PATH
 /usr/sap/A4H/D00/exe/disp+work -version
+
+# telnet
+timeout 5 bash -c "</dev/tcp/localhost/50000"
+# 0: 성공, 1: 실패
+echo $?
 ```
