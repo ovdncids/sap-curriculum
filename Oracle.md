@@ -2,15 +2,15 @@
 * [설치](https://github.com/ovdncids/mysql-curriculum/blob/master/Oracle.md)
 
 ## Entry 등록
+* `First DB`는 Hana DB이고, `Secondary DB` 형식으로 Entry 등록
 ```sh
 T-Code: DBCO
 
 Connection Name : ZORACLE
 DBMS            : ORA
-Connection Info : //localhost:1521/FREEPDB1
-Connection Info : "localhost:1521/FREEPDB1"
+Connection Info : "172.17.0.3:1521/FREEPDB1"
 ```
-* `First`는 Hana DB이고, `Secondary DB` 형식으로 Entry 등록
+* Docker Desktop > oracle > Inspect > Networks > bridge > IPAddress (Docker SAP와 같은 Gateway이면 Ping 가능)
 
 ## 접속 테스트
 ```sh
