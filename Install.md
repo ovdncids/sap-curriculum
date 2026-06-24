@@ -126,4 +126,8 @@ docker exec -it a4h bash
 
 # 정상적으로 서버가 `GREEN, Running` 인지 확인
 /usr/sap/hostctrl/exe/sapcontrol -nr 00 -function GetProcessList
+
+# disp+work 명령으로 버전 보기
+export LD_LIBRARY_PATH=/usr/sap/A4H/D00/exe:/usr/sap/A4H/SYS/exe/run:$LD_LIBRARY_PATH
+/usr/sap/A4H/D00/exe/disp+work -version
 ```
