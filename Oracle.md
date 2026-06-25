@@ -36,11 +36,8 @@ docker cp /{다운 경로}/oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rp
 # Docker SAP
 rpm -ivh /opt/sap/oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm
 find / -name "libclntsh.so*"
-ln -s /usr/lib/oracle/11.2/client64/lib/libclntsh.so.11.1 /lib64/libclntsh.so.11.1
-
+cp /usr/lib/oracle/11.2/client64/lib/* /lib64
 ldd /usr/sap/A4H/D00/exe/dboraslib.so
-libnnz11.so => not found
-ln -s /usr/lib/oracle/11.2/client64/lib/libnnz11.so /lib64/libnnz11.so
 ```
 
 ## 프로그램
