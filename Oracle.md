@@ -8,7 +8,7 @@ T-Code: DBCO
 
 Connection Name : ZORACLE
 DBMS            : ORA
-Connection Info : "172.17.0.3:1521/FREEPDB1"
+Connection Info : "172.17.0.3:1521/xe"
 ```
 * Docker Desktop > oracle > Inspect > Networks > bridge > IPAddress (Docker SAP와 같은 Gateway이면 Ping 가능)
 
