@@ -9,6 +9,7 @@ T-Code: DBCO
 Connection Name : ZORACLE
 DBMS            : ORA
 Connection Info : "172.17.0.3:1521/xe"
+Connection Info : "172.17.0.3:1521/xe":::HR (스키마를 HR로 지정, DBACOCKPIT에서 수정 가능)
 ```
 * Docker Desktop > oracle > Inspect > Networks > bridge > IPAddress (Docker SAP와 같은 Gateway이면 Ping 가능)
 
