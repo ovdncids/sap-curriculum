@@ -18,6 +18,7 @@ Connection Info : "172.17.0.3:1521/xe":::HR (스키마를 HR로 지정, DBACOCKP
 T-Code: DBACOCKPIT
 
 DB Connections > Oracle > ZORACLE > Test
+  # 정보 수정 후에 Test 하면 다음번 `ZORACLE` 사용부터 바로 적용 된다.
 ```
 
 ### -- ERROR Database connection ZORACLE: ADBC error 'Internal error      8.192  has occured'
