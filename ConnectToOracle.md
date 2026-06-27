@@ -1,5 +1,5 @@
-# Oracle
-* [설치](https://github.com/ovdncids/mysql-curriculum/blob/master/Oracle.md)
+# Connect to Oracle
+* [Oracle 설치](https://github.com/ovdncids/mysql-curriculum/blob/master/Oracle.md)
 
 ## Entry 등록
 * `First DB`는 Hana DB이고, `Secondary DB` 형식으로 Entry 등록
@@ -53,7 +53,7 @@ ldd /usr/sap/A4H/D00/exe/dboraslib.so
 ```
 * `Oracle 11g`, `Oracle 23` 둘다 접속 가능
 
-## 프로그램
+## 접속 확인 프로그램
 ```abap
 REPORT ztest_oracle.
 
@@ -71,3 +71,4 @@ ENDEXEC.
 
 WRITE: / lv_count.
 ```
+* 실행해서 결과가 `1`이 나오면 성공
