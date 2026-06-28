@@ -16,7 +16,6 @@ Short text: 함수 테스트 > 저장
 
 # 함수 속성 변경
 Z_FUNCTION_TEST > Change
-Attributes > Remote-Enabled Module (RFC 활성화)
 Import > Parameter Name: IV_INPUT, Typing: TYPE, Associated Type: STRING
 Export > Parameter Name: EV_OUTPUT, Typing: TYPE, Associated Type: STRING
 Source code
@@ -32,7 +31,22 @@ EV_OUTPUT = IV_INPUT && ' World!'.
 
 ENDFUNCTION.
 ```
-* 활성화(Ctrl + F3) 도중 Bypass 오류 나면 Active 버튼 누름, 실행(F8)
+
+활성화
+```sh
+Inactive Objects for DEVLOPER 창 >
+  `Local objects 탭` > Select All(F9) > Enter
+# `Transportable Objects 탭`을 선택하면 이관 대상이라는 뜻
+```
+* 활성화(Ctrl + F3) 후 실행(F8) > 정상 동작 확인
+
+RFC 활성화
+```sh
+# 함수 속성 변경
+Z_FUNCTION_TEST > Change
+Attributes > Remote-Enabled Module (RFC 활성화)
+```
+* 활성화 도중 Bypass 오류 나면 Active 버튼 누름, 실행 > 정상 동작 확인
 
 ## pom.xml
 ```xml
@@ -50,6 +64,16 @@ ENDFUNCTION.
     <!-- 현 github 하위 lib 폴더의 모든 파일을 ${basedir}/src/main/webapp/WEB-INF/lib에 복사  -->
 </dependency>
 ```
+* `/src/main/webapp/WEB-INF/lib`에 모든 파일을 복사해 넣는다.
+
+## build.gradle.kts
+```kts
+dependencies {
+    implementation(files("libs/sap-jco-manager.jar"))
+    implementation(files("libs/sapjco3.jar"))
+}
+```
+* `/libs`에 모든 파일을 복사해 넣는다.
 
 ## Java
 ```java
@@ -92,3 +116,4 @@ public class SapConnection {
 ```
 * 실행 할 수 있는 `main()` 메서드에서 `SapConnection.connect();`
 * 콘솔에 `Hello World!` 찍힘
+* `M1`인 경우 `(have 'x86_64', need 'arm64e' or 'arm64e.v1' or 'arm64' or 'arm64')` 오류 발생시 `Intel JDK(x64)`으로 변경
