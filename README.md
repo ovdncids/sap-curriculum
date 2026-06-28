@@ -12,8 +12,9 @@ Address > Title, Last name, First name 입력
 Logon Data > Alias, New Password, Repeat Password
 Defaults > Date Format > YYYY-MM-DD
 Profiles > Profile 입력창 > SAP_ALL > 엔터
-Exit > Save user
+Save 버튼 또는 Exit > Save user
 ```
+* 로그인 할때 비밀번호를 변경하므로 1회성 비밀번호 사용
 
 ## 더미 데이터 생성
 * https://www.youtube.com/watch?v=Otm8svqKfvk&t=453s
