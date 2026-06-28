@@ -53,7 +53,7 @@ ldd /usr/sap/A4H/D00/exe/dboraslib.so
 ```
 * `Oracle 11g`, `Oracle 23` 둘다 접속 가능
 
-## 접속 확인 프로그램
+## 접속 확인 프로그램 (Native SQL 형식)
 ```abap
 REPORT ztest_oracle.
 
