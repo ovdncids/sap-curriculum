@@ -38,7 +38,7 @@ Inactive Objects for DEVLOPER 창 >
   `Local objects 탭` > Select All(F9) > Enter
 # `Transportable Objects 탭`을 선택하면 이관 대상이라는 뜻
 ```
-* 활성화(Ctrl + F3) 후 실행(F8) > 정상 동작 확인
+* 활성화(Ctrl + F3) 후 실행(F8) > IV_INPUT 값 입력 > 실행(F8) > 정상 동작 확인
 
 RFC 활성화
 ```sh
@@ -46,7 +46,7 @@ RFC 활성화
 Z_FUNCTION_TEST > Change
 Attributes > Remote-Enabled Module (RFC 활성화)
 ```
-* 활성화 도중 Bypass 오류 나면 Active 버튼 누름, 실행 > 정상 동작 확인
+* 활성화 도중 Bypass 오류 나면 Active 버튼 누름 > 정상 동작 확인
 
 ## pom.xml
 ```xml
