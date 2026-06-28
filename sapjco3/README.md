@@ -117,3 +117,51 @@ public class SapConnection {
 * 실행 할 수 있는 `main()` 메서드에서 `SapConnection.connect();`
 * 콘솔에 `Hello World!` 찍힘
 * `M1`인 경우 `(have 'x86_64', need 'arm64e' or 'arm64e.v1' or 'arm64' or 'arm64')` 오류 발생시 `Intel JDK(x64)`으로 변경
+
+<!--
+FUNCTION Z_FUNCTION_ORACLE_TEST.
+*"----------------------------------------------------------------------
+*"*"Local Interface:
+*"  EXPORTING
+*"     REFERENCE(EV_OUTPUT) TYPE  STRING
+*"----------------------------------------------------------------------
+
+TYPES: BEGIN OF ty_test_pk,
+         a    TYPE i,
+         b    TYPE i,
+         name TYPE string,
+       END OF ty_test_pk.
+
+DATA: lt_data_test_pk TYPE TABLE OF ty_test_pk,
+      ls_data_test_pk TYPE ty_test_pk.
+
+EXEC SQL.
+  CONNECT TO 'ZORACLE'
+ENDEXEC.
+
+SELECT
+  A,
+  B,
+  NAME
+FROM ZOT_TEST_PK
+INTO CORRESPONDING FIELDS OF TABLE @lt_data_test_pk.
+
+*REFRESH et_output.
+*LOOP AT lt_data_test_pk INTO ls_data_test_pk.
+*  APPEND |{ ls_data_test_pk-a }-{ ls_data_test_pk-b }-{ ls_data_test_pk-name }| TO EV_OUTPUT.
+*ENDLOOP.
+
+
+
+DATA: lv_buffer TYPE c.
+LOOP AT lt_data_test_pk INTO ls_data_test_pk.
+*  WRITE: ls_data_test_pk-a.
+  MESSAGE ls_data_test_pk-name TYPE 'I'.
+ENDLOOP.
+
+ENDFUNCTION.
+
+------------------
+DBCO 세팅까지 완료하셨다니 큰 산은 넘으셨네요!ZOT_TEST_PK라는 이름으로 Open SQL을 사용하시려면, SAP의 DDIC(Data Dictionary)에 테이블을 생성해 주어야 합니다. SAP가 이 이름을 인식해야 ABAP 컴파일러가 에러를 내지 않거든요.오라클에 있는 테이블 구조와 똑같이 SAP에 투명 테이블(Transparent Table)로 만들어주는 과정입니다. 세팅 절차를 알기 쉽게 정리해 드렸습니다.1단계: SAP GUI에서 테이블 생성 (SE11)트랜잭션 코드 SE11을 실행합니다.Database table 입력창에 ZOT_TEST_PK를 입력하고 Create 버튼을 누릅니다.Delivery and Maintenance 탭 설정:Short Description: 테이블 설명 적기 (예: Oracle Test Table)Delivery Class: A (Application table)Data Browser/Table View Maint.: Display/Maintenance Allowed (나중에 데이터 확인하기 편합니다)2단계: 필드(Fields) 정의하기 (중요)Fields 탭으로 이동해서 오라클의 TEST_PK 테이블 구조와 똑같이 매핑해 줍니다. SAP 내장 데이터 타입을 사용해 아래 테이블처럼 입력하세요.FieldKeyInitial ValuesData Element (또는 기본 타입 직접 지정)DescriptionMANDTMANDTClient (SAP 기본 필수 필드)AINT4 (또는 Built-in Type INT4)오라클의 A (INT)BINT4 (또는 Built-in Type INT4)오라클의 B (INT)NAMECHAR200 (또는 Built-in Type CHAR, Length 200)오라클의 NAME💡 꿀팁: Data Element 자리에 기존 엘리먼트가 없다면, 상단 메뉴의 Built-in Type 버튼을 누르고 INT4나 CHAR 타입을 직접 입력하면 편합니다.또한 오라클 Primary Key가 (A, B)였으므로 SAP에서도 A와 B 행의 Key 체크박스에 체크를 해줍니다.3단계: 기술적 속성(Technical Settings) 설정상단 메뉴바에서 Technical Settings 버튼(또는 Ctrl + Shift + F9)을 누릅니다.아래 항목을 입력하고 저장(Ctrl + S) 후 뒤로 가기(F3) 합니다.Data class: APPL0 (Master data, transparent tables)Size category: 0 (가장 작은 크기 설정)Buffering: Buffering Not Allowed4단계: 활성화(Activation)모든 설정을 마쳤다면 상단 메뉴의 체크 버튼(Ctrl + F2)을 눌러 문법 에러가 없는지 확인합니다.활성화 버튼(Ctrl + F3)을 눌러 테이블을 완전히 활성화합니다.
+
+-->
