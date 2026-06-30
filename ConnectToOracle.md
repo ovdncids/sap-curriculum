@@ -47,10 +47,11 @@ ldd /usr/sap/A4H/D00/exe/dboraslib.so
 
 # 2번 방법 (라이브러리 등록)
 echo "/usr/lib/oracle/11.2/client64/lib" > /etc/ld.so.conf.d/oracle11g.conf
+ldconfig -p | grep libclntsh.so
+  # 라이브러리에 libclntsh.so.11.1 파일이 등록되어 있는지 확인
 ldconfig
   # /etc/ld.so.conf.d/oracle11g.conf 파일을 라이브러리에 등록
 ldconfig -p | grep libclntsh.so
-  # 라이브러리에 libclntsh.so.11.1 파일이 등록되어 있는지 확인
 ldd /usr/sap/A4H/D00/exe/dboraslib.so
 ```
 * `Oracle 11g`, `Oracle 23` 둘다 접속 가능
