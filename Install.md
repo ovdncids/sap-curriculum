@@ -122,7 +122,7 @@ docker exec -it a4h /usr/local/bin/asabap_license_update
 
 ## S/4HANA Trial 서버 bash 들어가기
 ```sh
-docker exec -it a4h bash
+docker exec -it a4h /bin/sh
 
 # 정상적으로 서버가 `GREEN, Running` 인지 확인
 /usr/sap/hostctrl/exe/sapcontrol -nr 00 -function GetProcessList
