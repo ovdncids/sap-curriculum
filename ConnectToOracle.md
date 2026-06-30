@@ -36,6 +36,8 @@ libclntsh.so.11.1 => not found
 docker cp /{다운 경로}/oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm a4h:/opt/sap/oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm
 
 # Docker SAP
+apt update
+apt install -y rpm
 rpm -ivh /opt/sap/oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm
 find / -name "libclntsh.so*"
 
