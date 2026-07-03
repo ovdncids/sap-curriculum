@@ -152,36 +152,40 @@ FUNCTION Z_ORACLE_TEST.
 *"*"Local Interface:
 *"----------------------------------------------------------------------
 
-TYPES: BEGIN OF ty_test_pk,
+TYPES: BEGIN OF ty_cpk_swap_tst,
          a    TYPE i,
          b    TYPE i,
          name TYPE string,
-       END OF ty_test_pk.
+       END OF ty_cpk_swap_tst.
 
-DATA: lt_data_test_pk TYPE TABLE OF ty_test_pk,
-      ls_data_test_pk TYPE ty_test_pk.
+DATA: lt_cpk_swap_tst TYPE TABLE OF ty_cpk_swap_tst,
+      ls_cpk_swap_tst TYPE ty_cpk_swap_tst.
+
+APPEND VALUE ty_cpk_swap_tst(
+  a    = 1
+  b    = 2
+  name = '홍길동'
+) TO lt_cpk_swap_tst.
+lt_cpk_swap_tst = VALUE #(
+  BASE lt_cpk_swap_tst
+  ( a = 3 b = 4 name = '이순신' )
+).
 
 SELECT
   A,
   B,
   NAME
-FROM ZOT_TEST_PK
+FROM ZOT_CPK_SWAP_TST
 CONNECTION ZORACLE
-INTO CORRESPONDING FIELDS OF TABLE @lt_data_test_pk.
-
-
+INTO CORRESPONDING FIELDS OF TABLE @lt_cpk_swap_tst.
 
 *REFRESH et_output.
-*LOOP AT lt_data_test_pk INTO ls_data_test_pk.
-*  APPEND |{ ls_data_test_pk-a }-{ ls_data_test_pk-b }-{ ls_data_test_pk-name }| TO EV_OUTPUT.
+*LOOP AT lt_cpk_swap_tst INTO ls_cpk_swap_tst.
+*  APPEND |{ ls_cpk_swap_tst-a }-{ ls_cpk_swap_tst-b }-{ ls_cpk_swap_tst-name }| TO EV_OUTPUT.
 *ENDLOOP.
 
-
-
-DATA: lv_buffer TYPE c.
-LOOP AT lt_data_test_pk INTO ls_data_test_pk.
-*  WRITE: ls_data_test_pk-a.
-  MESSAGE ls_data_test_pk-name TYPE 'I'.
+LOOP AT lt_cpk_swap_tst INTO ls_cpk_swap_tst.
+  MESSAGE ls_cpk_swap_tst-name TYPE 'I'.
 ENDLOOP.
 
 ENDFUNCTION.
