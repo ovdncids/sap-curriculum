@@ -102,6 +102,7 @@ CL_DEMO_OUTPUT=>BEGIN_SECTION('H3').
 CL_DEMO_OUTPUT=>DISPLAY('내용').
 ```
 * 활성화(Ctrl + F3), 실행(F8)
+* `디버거 모드 > 우측 하단 > 변수명 > 더블클릭` 값을 확인 하고 `Back(F3)`
 
 ### 팝업창
 ```abap
