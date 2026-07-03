@@ -3,6 +3,13 @@
 ## Docker SAP S/4HANA Trial@1909 설치
 * [Docker SAP S/4HANA Trial@1909 설치](https://github.com/ovdncids/sap-curriculum/blob/master/Install.md)
 
+## 단축키
+```sh
+Ctrl: 현재 포커스 위치를 알려줌
+Ctrl + y: 여러줄의 텍스트를 선택 가능하게 변경 (마우스 포인터가 변경 됨)
+Ctrl + 클릭: 명령어, 변수명 전체 선택
+```
+
 ## 사용자 추가
 * https://www.youtube.com/watch?v=Otm8svqKfvk&t=453s
 ```sh
