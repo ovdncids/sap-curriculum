@@ -171,6 +171,38 @@ lt_cpk_swap_tst = VALUE #(
   ( a = 3 b = 4 name = '이순신' )
 ).
 
+LOOP AT lt_cpk_swap_tst INTO ls_cpk_swap_tst.
+  MESSAGE |A: { ls_cpk_swap_tst-a }, B: { ls_cpk_swap_tst-b }, NAME: { ls_cpk_swap_tst-name }| TYPE 'I'.
+ENDLOOP.
+
+ENDFUNCTION.
+```
+
+```abap
+FUNCTION Z_ORACLE_TEST.
+*"----------------------------------------------------------------------
+*"*"Local Interface:
+*"----------------------------------------------------------------------
+
+TYPES: BEGIN OF ty_cpk_swap_tst,
+         a    TYPE i,
+         b    TYPE i,
+         name TYPE string,
+       END OF ty_cpk_swap_tst.
+
+DATA: lt_cpk_swap_tst TYPE TABLE OF ty_cpk_swap_tst,
+      ls_cpk_swap_tst TYPE ty_cpk_swap_tst.
+
+APPEND VALUE ty_cpk_swap_tst(
+  a    = 1
+  b    = 2
+  name = '홍길동'
+) TO lt_cpk_swap_tst.
+lt_cpk_swap_tst = VALUE #(
+  BASE lt_cpk_swap_tst
+  ( a = 3 b = 4 name = '이순신' )
+).
+
 SELECT
   A,
   B,
