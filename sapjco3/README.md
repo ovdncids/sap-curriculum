@@ -46,7 +46,7 @@ RFC 활성화
 Z_FUNCTION_TEST > Change
 Attributes > Remote-Enabled Module (RFC 활성화)
 ```
-* 활성화 도중 Bypass 오류 나면 Active 버튼 누름 > 정상 동작 확인
+* 활성화 도중 Bypass 오류 나면 `Import > IV_INPUT > Pass by Value > 체크`, `Export` 동일
 
 ## pom.xml
 ```xml
