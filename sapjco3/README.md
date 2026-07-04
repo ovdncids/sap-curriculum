@@ -118,10 +118,41 @@ public class SapConnection {
 * 콘솔에 `Hello World!` 찍힘
 * `M1`인 경우 `(have 'x86_64', need 'arm64e' or 'arm64e.v1' or 'arm64' or 'arm64')` 오류 발생시 `Intel JDK(x64)`으로 변경
 
-## Open SQL
-### Secondary DB
+## Abap 기본 문법
+```abap
+FUNCTION Z_BASIC_TEST.
+
+* 1회성 Type
+TYPES: BEGIN OF ty_cpk_swap_tst,
+         a    TYPE i,
+         b    TYPE i,
+         name TYPE string,
+       END OF ty_cpk_swap_tst.
+* LOOP 문을 돌릴때 꼭 `ls_cpk_swap_tst` 이름으로 구조체를 받아야 사용해야 한다.
+DATA: lt_cpk_swap_tst TYPE TABLE OF ty_cpk_swap_tst,
+      ls_cpk_swap_tst TYPE ty_cpk_swap_tst.
+* 하나의 Data만 넣을때
+APPEND VALUE ty_cpk_swap_tst(
+  a    = 1
+  b    = 2
+  name = '홍길동'
+) TO lt_cpk_swap_tst.
+* 여러개의 Data를 넣을때, #은 any를 뜻함
+lt_cpk_swap_tst = VALUE #(
+  BASE lt_cpk_swap_tst
+  ( a = 3 b = 4 name = '이순신' )
+).
+* FUNCTION은 WRITE 문이 출력되지 않고, MESSAGE는 개발 목적으로만 사용한다.
+LOOP AT lt_cpk_swap_tst INTO ls_cpk_swap_tst.
+  MESSAGE |A: { ls_cpk_swap_tst-a }, B: { ls_cpk_swap_tst-b }, NAME: { ls_cpk_swap_tst-name }| TYPE 'I'.
+ENDLOOP.
+
+ENDFUNCTION.
+```
+
+## Open SQL - Secondary DB
 * [Connect to Oracle](https://github.com/ovdncids/sap-curriculum/blob/master/ConnectToOracle.md)
-#### DDIC(Data Dictionary)
+### DDIC(Data Dictionary) - Database table
 ```sh
 T-Code: SE11 (Dictionary)
 Database table: ZOT_CPK_SWAP_TST > Create
@@ -148,60 +179,14 @@ Activate (Warnings occurred during activation 떠도 Yes)
 
 ```abap
 FUNCTION Z_ORACLE_TEST.
-*"----------------------------------------------------------------------
-*"*"Local Interface:
-*"----------------------------------------------------------------------
 
 TYPES: BEGIN OF ty_cpk_swap_tst,
          a    TYPE i,
          b    TYPE i,
          name TYPE string,
        END OF ty_cpk_swap_tst.
-
 DATA: lt_cpk_swap_tst TYPE TABLE OF ty_cpk_swap_tst,
       ls_cpk_swap_tst TYPE ty_cpk_swap_tst.
-
-APPEND VALUE ty_cpk_swap_tst(
-  a    = 1
-  b    = 2
-  name = '홍길동'
-) TO lt_cpk_swap_tst.
-lt_cpk_swap_tst = VALUE #(
-  BASE lt_cpk_swap_tst
-  ( a = 3 b = 4 name = '이순신' )
-).
-
-LOOP AT lt_cpk_swap_tst INTO ls_cpk_swap_tst.
-  MESSAGE |A: { ls_cpk_swap_tst-a }, B: { ls_cpk_swap_tst-b }, NAME: { ls_cpk_swap_tst-name }| TYPE 'I'.
-ENDLOOP.
-
-ENDFUNCTION.
-```
-
-```abap
-FUNCTION Z_ORACLE_TEST.
-*"----------------------------------------------------------------------
-*"*"Local Interface:
-*"----------------------------------------------------------------------
-
-TYPES: BEGIN OF ty_cpk_swap_tst,
-         a    TYPE i,
-         b    TYPE i,
-         name TYPE string,
-       END OF ty_cpk_swap_tst.
-
-DATA: lt_cpk_swap_tst TYPE TABLE OF ty_cpk_swap_tst,
-      ls_cpk_swap_tst TYPE ty_cpk_swap_tst.
-
-APPEND VALUE ty_cpk_swap_tst(
-  a    = 1
-  b    = 2
-  name = '홍길동'
-) TO lt_cpk_swap_tst.
-lt_cpk_swap_tst = VALUE #(
-  BASE lt_cpk_swap_tst
-  ( a = 3 b = 4 name = '이순신' )
-).
 
 SELECT
   A,
@@ -211,14 +196,66 @@ FROM ZOT_CPK_SWAP_TST
 CONNECTION ZORACLE
 INTO CORRESPONDING FIELDS OF TABLE @lt_cpk_swap_tst.
 
-*REFRESH et_output.
-*LOOP AT lt_cpk_swap_tst INTO ls_cpk_swap_tst.
-*  APPEND |{ ls_cpk_swap_tst-a }-{ ls_cpk_swap_tst-b }-{ ls_cpk_swap_tst-name }| TO EV_OUTPUT.
-*ENDLOOP.
-
-LOOP AT lt_cpk_swap_tst INTO ls_cpk_swap_tst.
-  MESSAGE ls_cpk_swap_tst-name TYPE 'I'.
-ENDLOOP.
-
 ENDFUNCTION.
+```
+* 디버그 모드에서 `lt_cpk_swap_tst` 값 확인
+
+### DDIC(Data Dictionary) - Data type - Table Type, Structure
+```sh
+T-Code: SE11 (Dictionary)
+Data type: ZST_CPK_SWAP_TST > Create > Structure
+Short Description: ZORACLE의 ZOT_CPK_SWAP_TST 테이블 Structure
+Components
+  Component  Typing Method  Component Type
+  A          Types  INT4
+  B          Types  INT4
+  NAME       Types  CHAR200
+Save > Package > $TMP > Save
+
+Data type: ZTT_CPK_SWAP_TST > Create > Table type
+Short Description: ZORACLE의 ZOT_CPK_SWAP_TST 테이블 Table Type
+Line Type: ZST_CPK_SWAP_TST
+Save > Package > $TMP > Save > 뒤로가기
+Activate (Local objects 뜨면 전부 선택 후 Continue, Warnings occurred during activation 떠도 Yes)
+```
+
+### 1회성 타입을 DDIC - Data type으로 변경
+```diff
+- TYPES: BEGIN OF ty_cpk_swap_tst,
+-          a    TYPE i,
+-          b    TYPE i,
+-          name TYPE string,
+-        END OF ty_cpk_swap_tst.
+- DATA: lt_cpk_swap_tst TYPE TABLE OF ty_cpk_swap_tst,
+-       ls_cpk_swap_tst TYPE ty_cpk_swap_tst.
+```
+```abap
+DATA: lt_cpk_swap_tst TYPE ztt_cpk_swap_tst,
+      ls_cpk_swap_tst TYPE zst_cpk_swap_tst.
+```
+
+### Export 형식을 ZTT_CPK_SWAP_TST으로 추가 (Java에서 List<HashMap<String, Object>>로 받기 위해)
+```sh
+Z_ORACLE_TEST > Export
+  Parameter Name: ET_DATA, Typing: TYPE, Associated Type: ZTT_CPK_SWAP_TST 입력 후 엔터
+```
+```abap
+ET_DATA = lt_cpk_swap_tst.
+```
+
+### Java
+```java
+SapManager sapManager = getSapManager();
+SapFunction function = sapManager.getFunction("Z_ORACLE_TEST");
+SapFunctionResult sapResult = function.execute();
+JCoTable exportTable = sapResult.getExportParameterList().getTable("ET_DATA");
+List<HashMap<String, Object>> exportList = new ArrayList<>();
+for (int i = 0; i < exportTable.getNumRows(); i++) {
+    exportTable.setRow(i);
+    HashMap<String, Object> row = new HashMap<>();
+    row.put("A", exportTable.getInt("A"));
+    row.put("B", exportTable.getInt("B"));
+    row.put("NAME", exportTable.getString("NAME"));
+    exportList.add(row);
+}
 ```
