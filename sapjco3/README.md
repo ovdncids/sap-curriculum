@@ -243,19 +243,50 @@ Z_ORACLE_TEST > Export
 ET_DATA = lt_cpk_swap_tst.
 ```
 
-### Java
+#### Java
 ```java
-SapManager sapManager = getSapManager();
-SapFunction function = sapManager.getFunction("Z_ORACLE_TEST");
-SapFunctionResult sapResult = function.execute();
-JCoTable exportTable = sapResult.getExportParameterList().getTable("ET_DATA");
-List<HashMap<String, Object>> exportList = new ArrayList<>();
-for (int i = 0; i < exportTable.getNumRows(); i++) {
-    exportTable.setRow(i);
-    HashMap<String, Object> row = new HashMap<>();
-    row.put("A", exportTable.getInt("A"));
-    row.put("B", exportTable.getInt("B"));
-    row.put("NAME", exportTable.getString("NAME"));
-    exportList.add(row);
+public static void connectOracle() throws IOException, JCoException {
+    SapManager sapManager = getSapManager();
+    SapFunction function = sapManager.getFunction("Z_ORACLE_TEST");
+    SapFunctionResult sapResult = function.execute();
+    JCoTable exportTable = sapResult.getExportParameterList().getTable("ET_DATA");
+    List<HashMap<String, Object>> exportList = extractTable(exportTable);
+}
+
+public static List<HashMap<String, Object>> extractTable(JCoTable table) {
+    List<HashMap<String, Object>> list = new ArrayList<>();
+    for (int i = 0; i < table.getNumRows(); i++) {
+        table.setRow(i);
+        HashMap<String, Object> row = new HashMap<>();
+        for (JCoField field : table) {
+            row.put(field.getName(), field.getValue());
+        }
+        list.add(row);
+    }
+    return list;
+}
+```
+
+### Import 형식을 ZTT_CPK_SWAP_TST으로 추가 (Java에서 List<HashMap<String, Object>>로 보내기 위해)
+```sh
+Z_ORACLE_TEST > Import
+  Parameter Name: IT_DATA, Typing: TYPE, Associated Type: ZTT_CPK_SWAP_TST 입력 후 엔터
+```
+```abap
+ET_DATA = lt_cpk_swap_tst.
+```
+
+#### Java
+```java
+JCoTable importTable = function.getImportParameterList().getTable("IT_DATA");
+{
+    importTable.appendRow();
+    importTable.setValue("A", 5);
+    importTable.setValue("B", 6);
+    importTable.setValue("NAME", "박지성");
+    importTable.appendRow();
+    importTable.setValue("A", 7);
+    importTable.setValue("B", 8);
+    importTable.setValue("NAME", "손흥민");
 }
 ```
