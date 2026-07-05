@@ -176,7 +176,11 @@ Save > Package > $TMP > Save
 Save 후 뒤로가기
 Activate (Warnings occurred during activation 떠도 Yes)
 ```
-* 오라클에 [TB_CPK_SWAP_TST](https://github.com/ovdncids/mysql-curriculum/blob/master/Oracle.md#%EB%B3%B5%ED%95%A9-%EA%B8%B0%EB%B3%B8-%ED%82%A4composite-primary-key-%EC%8A%A4%EC%99%91swap) 테이블과 동일하게 `ZOT_CPK_SWAP_TST` 테이블 생성
+```sql
+DROP SYNONYM ZOT_CPK_SWAP_TST;
+CREATE SYNONYM ZOT_CPK_SWAP_TST FOR TB_CPK_SWAP_TST;
+```
+* 오라클에 [TB_CPK_SWAP_TST](https://github.com/ovdncids/mysql-curriculum/blob/master/Oracle.md#%EB%B3%B5%ED%95%A9-%EA%B8%B0%EB%B3%B8-%ED%82%A4composite-primary-key-%EC%8A%A4%EC%99%91swap) 테이블의 Synonym `ZOT_CPK_SWAP_TST` 생성
 
 ```abap
 FUNCTION Z_ORACLE_TEST.
