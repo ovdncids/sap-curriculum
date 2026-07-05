@@ -254,7 +254,6 @@ public static void connectOracle() throws IOException, JCoException {
     JCoTable exportTable = sapResult.getExportParameterList().getTable("ET_DATA");
     List<HashMap<String, Object>> exportList = extractTable(exportTable);
 }
-
 public static List<HashMap<String, Object>> extractTable(JCoTable table) {
     List<HashMap<String, Object>> list = new ArrayList<>();
     for (int i = 0; i < table.getNumRows(); i++) {
@@ -296,15 +295,30 @@ ENDTRY.
 
 #### Java
 ```java
-JCoTable importTable = function.getImportParameterList().getTable("IT_DATA");
-{
-    importTable.appendRow();
-    importTable.setValue("A", 5);
-    importTable.setValue("B", 6);
-    importTable.setValue("NAME", "박지성");
-    importTable.appendRow();
-    importTable.setValue("A", 7);
-    importTable.setValue("B", 8);
-    importTable.setValue("NAME", "손흥민");
+public static void connectOracle() throws IOException, JCoException {
+  List<HashMap<String, Object>> importList = new ArrayList<>();
+  {
+      HashMap<String, Object> map1 = new HashMap<>();
+      map1.put("A", 5);
+      map1.put("B", 6);
+      map1.put("NAME", "박지성");
+      importList.add(map1);
+      HashMap<String, Object> map2 = new HashMap<>();
+      map2.put("A", 7);
+      map2.put("B", 8);
+      map2.put("NAME", "손흥민");
+      importList.add(map2);
+  }
+  // SapFunction function = sapManager.getFunction("Z_ORACLE_TEST"); 밑에 넣는다. //
+  JCoTable importTable = function.getImportParameterList().getTable("IT_DATA");
+  fillTable(importTable, importList);
+}
+public static void fillTable(JCoTable table, List<HashMap<String, Object>> list) {
+    for (HashMap<String, Object> row : list) {
+        table.appendRow();
+        for (Map.Entry<String, Object> e : row.entrySet()) {
+            table.setValue(e.getKey(), e.getValue());
+        }
+    }
 }
 ```
