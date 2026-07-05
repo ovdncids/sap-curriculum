@@ -152,6 +152,7 @@ ENDFUNCTION.
 
 ## Open SQL - Secondary DB
 * [Connect to Oracle](https://github.com/ovdncids/sap-curriculum/blob/master/ConnectToOracle.md)
+* Open SQL 장점: 깔끔한 코드, 단점: DDIC DB명과 Oracle DB명을 맞추어야 한다.
 ### DDIC(Data Dictionary) - Database table
 ```sh
 T-Code: SE11 (Dictionary)
@@ -240,9 +241,14 @@ Z_ORACLE_TEST > Export
   Parameter Name: ET_DATA, Typing: TYPE, Associated Type: ZTT_CPK_SWAP_TST 입력 후 엔터
 ```
 ```abap
+* 1번 방법
+SELECT *
+FROM ZOT_CPK_SWAP_TST
+CONNECTION ZORACLE
+INTO TABLE @et_data.
+
+* 2번 방법: ENDFUNCTION. 위에 추가
 et_data = lt_cpk_swap_tst.
-* 또는
-INTO CORRESPONDING FIELDS OF TABLE @et_data.
 ```
 
 #### Java
