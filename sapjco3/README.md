@@ -275,7 +275,7 @@ Z_ORACLE_TEST > Import
   Parameter Name: IT_DATA, Typing: TYPE, Associated Type: ZTT_CPK_SWAP_TST 입력 후 엔터
 ```
 ```abap
-* 1번 방법: 오류가 나도 sy-subrc = 0, sy-dbcnt = 0이 되고 끝이다. (TRY문 불필요)
+* 1번 방법: 중복키등 오류가 나도 sy-subrc = 0(성공), sy-dbcnt = 0이 되고 끝이다. (TRY문 불필요)
 LOOP AT it_data INTO ls_cpk_swap_tst.
   INSERT ZOT_CPK_SWAP_TST
   CONNECTION ZORACLE
