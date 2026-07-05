@@ -230,8 +230,8 @@ Activate (Local objects 뜨면 전부 선택 후 Continue, Warnings occurred dur
 -       ls_cpk_swap_tst TYPE ty_cpk_swap_tst.
 ```
 ```abap
-DATA: lt_cpk_swap_tst TYPE ztt_cpk_swap_tst,
-      ls_cpk_swap_tst TYPE zst_cpk_swap_tst.
+DATA: lt_cpk_swap_tst TYPE ztt_cpk_swap_tst.
+DATA: ls_cpk_swap_tst TYPE zst_cpk_swap_tst.
 ```
 
 ### Export 형식을 ZTT_CPK_SWAP_TST으로 추가 (Java에서 List<HashMap<String, Object>>로 받기 위해)
@@ -240,7 +240,9 @@ Z_ORACLE_TEST > Export
   Parameter Name: ET_DATA, Typing: TYPE, Associated Type: ZTT_CPK_SWAP_TST 입력 후 엔터
 ```
 ```abap
-ET_DATA = lt_cpk_swap_tst.
+et_data = lt_cpk_swap_tst.
+* 또는
+INTO CORRESPONDING FIELDS OF TABLE @et_data.
 ```
 
 #### Java
@@ -273,7 +275,15 @@ Z_ORACLE_TEST > Import
   Parameter Name: IT_DATA, Typing: TYPE, Associated Type: ZTT_CPK_SWAP_TST 입력 후 엔터
 ```
 ```abap
-ET_DATA = lt_cpk_swap_tst.
+INSERT ZOT_CPK_SWAP_TST
+CONNECTION ZORACLE
+FROM TABLE @it_data.
+* 또는
+LOOP AT it_data INTO ls_cpk_swap_tst.
+  INSERT ZOT_CPK_SWAP_TST
+  CONNECTION ZORACLE
+  FROM @ls_cpk_swap_tst.
+ENDLOOP.
 ```
 
 #### Java
