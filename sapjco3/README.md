@@ -152,7 +152,7 @@ ENDFUNCTION.
 
 ## Open SQL - Secondary DB
 * [Connect to Oracle](https://github.com/ovdncids/sap-curriculum/blob/master/ConnectToOracle.md)
-* Open SQL 장점: 깔끔한 코드, 단점: DDIC DB명과 Oracle DB명을 맞추어야 한다.
+
 ### DDIC(Data Dictionary) - Database table
 ```sh
 T-Code: SE11 (Dictionary)
