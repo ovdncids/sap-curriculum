@@ -275,15 +275,23 @@ Z_ORACLE_TEST > Import
   Parameter Name: IT_DATA, Typing: TYPE, Associated Type: ZTT_CPK_SWAP_TST 입력 후 엔터
 ```
 ```abap
-INSERT ZOT_CPK_SWAP_TST
-CONNECTION ZORACLE
-FROM TABLE @it_data.
-* 또는
+* 1번 방법: 오류가 나도 sy-subrc = 0, sy-dbcnt = 0이 되고 끝이다. (TRY문 불필요)
 LOOP AT it_data INTO ls_cpk_swap_tst.
   INSERT ZOT_CPK_SWAP_TST
   CONNECTION ZORACLE
   FROM @ls_cpk_swap_tst.
 ENDLOOP.
+DATA(lv_success) = sy-subrc.
+DATA(lv_count) = sy-dbcnt.
+
+* 2번 방법: 중복키등 오류가 나올 수 있으므로 TRY문 사용해야 한다.
+TRY.
+  INSERT ZOT_CPK_SWAP_TST
+  CONNECTION ZORACLE
+  FROM TABLE @it_data.
+CATCH cx_sy_open_sql_db INTO DATA(lx_sql).
+  DATA(lv_msg) = lx_sql->get_text( ).
+ENDTRY.
 ```
 
 #### Java
