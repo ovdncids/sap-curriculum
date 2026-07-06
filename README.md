@@ -147,13 +147,3 @@ T-Code: SE80 > Package > {ZABAP_PACKAGE_TEST001} > 엔터 > Create
 Short Description: {아밥 패키지 테스트001}, Package Type: Main Package > Save
 Request 오른쪽 Browser 아이콘: {리퀘스트 테스트 001} 선택 > Save
 ```
-
-## HANA DB 접속
-```sh
-# DBeaver
-Edition: Generic
-Host: vhcala4hci
-Port: 30213
-Username: SYSTEM
-Password: Ldtf5432
-```
