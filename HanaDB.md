@@ -10,6 +10,7 @@ Password: Ldtf5432
 ```
 
 ## DDIC - 메타 데이터
+* [DDIC(Data Dictionary) - Database table](https://github.com/ovdncids/sap-curriculum/tree/master/sapjco3#ddicdata-dictionary---database-table)
 * HANA DB에 없고 DDIC 객체임
 ```abap
 * Table/View/Structrue 등의 기본 정보
