@@ -41,12 +41,14 @@ Undeploy로 삭제 가능
 ```
 
 ### Test
-* [Authorization 검색](https://trials.cfapps.eu10-004.hana.ondemand.com/learning-journey/bt-int-suite/api-1)
+* [Authorization](https://trials.cfapps.eu10-004.hana.ondemand.com/learning-journey/bt-int-suite/api-1)
 ```sh
 SAP Integration Suite > Test > APIs
 Endpoints 주소
 GET
-Headers > Name: Authorization, Value: 위의 `Authorization 검색`에서 `Basic `으로 시작되는 `Header value`
+Headers
+  Name: Authorization
+  Value: 위의 `Authorization`에서 `Header value`로 검색 `Basic `으로 시작됨
 Send > Response Body > Hello World!
 ```
 * 간혹 Authorization 해더값이 안들어가면 F12 개발자 도구에서 확인. (Basic 먼저 넣고 Send 후 나머지도 붙여 넣고 Send)
