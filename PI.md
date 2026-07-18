@@ -53,3 +53,8 @@ Headers
 Send > Response Body > Hello World!
 ```
 * 간혹 Authorization 해더값이 안들어가면 F12 개발자 도구에서 확인. (Basic 먼저 넣고 Send 후 나머지도 붙여 넣고 Send)
+
+### SAP BTP Cockpit (Business Technology Platform, Cockpit: 조정석)
+* [기본 SAP 계정으로 핸드폰 인증](https://account.hanatrial.ondemand.com/trial/#/home/trial)
+* [SAP BTP Cockpit](https://account.hanatrial.ondemand.com/trial)
+* [구독 서비스](https://www.youtube.com/watch?v=jOYBIwDMWKY)
