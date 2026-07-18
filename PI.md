@@ -5,7 +5,7 @@
 * [30일 평가](https://www.sap.com/korea/products/technology-platform/integration-suite/trial.html)
 ```sh
 로그인 > `GE...`로 시작하는 SAP Learning Academy ID와 Password 생성 (이메일: ge...@sapexperienceacademy.com)
-Click here to start your basic trial! > `GE...` ID로 로그인
+Click here to start your basic trial! > {SAP Learning Academy ID} 로그인
 Introduction to SAP Integration Suite
 ```
 
@@ -15,8 +15,8 @@ Introduction to SAP Integration Suite
 * 평가판이므로 모든 사용자에게 공유 된다.
 ```sh
 SAP Integration Suite > Design > Integrations and APIs > Create
-Name: orders_GE3...
-Technical Name: ordersGE...
+Name: orders_{SAP Learning Academy ID}
+Technical Name: orders{SAP Learning Academy ID}
 Short description: 설명
 Save
 ```
@@ -26,19 +26,20 @@ Save
 ```sh
 SAP Integration Suite > Design > Integrations and APIs > Search > Hello World
 Artifacts > HelloWorld (상세로 이동하고 싶으면 '>'를 클릭) > Actions > Copy
-Name: orders_GE3...HelloWorld_copy
-Package: orders_GE3...
-Copy > Navigate > orders_GE3...HelloWorld_copy > Created 클릭하고 상세로 이동
-HTTPS 더블 클릭 > Connection > Edit > Address: ordersGE3HelloWorldCopy (Endpoints가 이미 존재 할 수 있으므로 유니크하게 만듬)
+Name: {SAP Learning Academy ID}_MSO_HelloWorld
+Package: orders_{SAP Learning Academy ID}
+Copy > Navigate > {SAP Learning Academy ID}_MSO_HelloWorld > 이름 클릭하고 상세로 이동
+HTTPS 더블 클릭 > Connection > Edit > Address: {SAP Learning Academy ID}MSOHelloWorld (Endpoints가 이미 존재 할 수 있으므로 유니크하게 만듬)
 Save > Deploy > Runtime Profile: Cloud Integration > Yes (상단에 `Runtime Status: Started` 성공)
 
 # Endpoints 주소 얻기
 도형 바탕 부분 더블 클릭 > Integration Flow > Deployment Status > Monitor Integration Content > Navigate
 Or
-SAP Integration Suite > Monitor > Integrations and APIs > Manage Integration Content > All > Search > ordersGE3HelloWorldCopy
+SAP Integration Suite > Monitor > Integrations and APIs > Manage Integration Content > All > Search > {SAP Learning Academy ID}MSOHelloWorld
 Endpoints 주소 확인
 Undeploy로 삭제 가능
 ```
+* MSO란 Message-Oriented Service Orchestration.
 
 ### Test
 * [Authorization](https://trials.cfapps.eu10-004.hana.ondemand.com/learning-journey/bt-int-suite/api-1)
