@@ -29,13 +29,13 @@ Artifacts > HelloWorld (상세로 이동하고 싶으면 '>'를 클릭) > Action
 Name: {SAP Learning Academy ID}_MSO_HelloWorld
 Package: orders_{SAP Learning Academy ID}
 Copy > Navigate > {SAP Learning Academy ID}_MSO_HelloWorld > 이름 클릭하고 상세로 이동
-HTTPS 더블 클릭 > Connection > Edit > Address: {SAP Learning Academy ID}MSOHelloWorld (Endpoints가 이미 존재 할 수 있으므로 유니크하게 만듬)
+HTTPS 더블 클릭 > Connection > Edit > Address: {SAP Learning Academy ID}_MSO_HelloWorld (Endpoints가 이미 존재 할 수 있으므로 유니크하게 만듬)
 Save > Deploy > Runtime Profile: Cloud Integration > Yes (상단에 `Runtime Status: Started` 성공)
 
 # Endpoints 주소 얻기
 도형 바탕 부분 더블 클릭 > Integration Flow > Deployment Status > Monitor Integration Content > Navigate
 Or
-SAP Integration Suite > Monitor > Integrations and APIs > Manage Integration Content > All > Search > {SAP Learning Academy ID}MSOHelloWorld
+SAP Integration Suite > Monitor > Integrations and APIs > Manage Integration Content > All > Search > {SAP Learning Academy ID}_MSO_HelloWorld
 Endpoints 주소 확인
 Undeploy로 삭제 가능
 ```
