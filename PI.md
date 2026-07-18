@@ -4,7 +4,7 @@
 ## SAP Integration Suite (Cloud 환경, 최근 흐름)
 * [30일 평가](https://www.sap.com/korea/products/technology-platform/integration-suite/trial.html)
 ```sh
-로그인 > `GE...`로 시작하는 ID와 Password 생성 (이메일: ge...@sapexperienceacademy.com)
+로그인 > `GE...`로 시작하는 SAP Learning Academy ID와 Password 생성 (이메일: ge...@sapexperienceacademy.com)
 Click here to start your basic trial! > `GE...` ID로 로그인
 Introduction to SAP Integration Suite
 ```
