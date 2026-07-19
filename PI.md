@@ -58,3 +58,9 @@ Send > Response Body > Hello World!
 * [기본 SAP 계정으로 핸드폰 인증](https://account.hanatrial.ondemand.com/trial/#/home/trial)
 * [SAP BTP Cockpit](https://account.hanatrial.ondemand.com/trial)
 * [구독 서비스](https://www.youtube.com/watch?v=jOYBIwDMWKY)
+* 하지만 기본 SAP 계정에 SAP BTP Cockpit 권한 신청한것이라서 SAP Learning Academy 계정에는 적용 되지 않는다.
+
+### Mock Data
+* https://mockapi.io
+* https://refapp-espm-ui-cf.cfapps.eu10.hana.ondemand.com/espm-cloud-web/espm.svc/
+* https://refapp-espm-ui-cf.cfapps.eu10.hana.ondemand.com/espm-cloud-web/espm.svc/Products
