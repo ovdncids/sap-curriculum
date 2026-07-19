@@ -59,6 +59,8 @@ Send > Response Body > Hello World!
 * [SAP BTP Cockpit](https://account.hanatrial.ondemand.com/trial)
 * [구독 서비스](https://www.youtube.com/watch?v=jOYBIwDMWKY)
 * 하지만 기본 SAP 계정에 SAP BTP Cockpit 권한 신청한것이라서 SAP Learning Academy 계정에는 적용 되지 않는다.
+* `Integration Suite 구독` 후에 `어플리케이션으로 이동` 아이콘을 누르면 권한이 없다고 나옴.
+* `SAP HANA Cloud 구독` 역시 권한 없음. (Trial에서는 이제 막은듯 함)
 
 ### Mock Data
 * https://mockapi.io
